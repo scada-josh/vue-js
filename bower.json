@@ -1,0 +1,10 @@
+{
+  "name": "my_VueJS",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery-legacy": "jquery#^1",
+    "jquery-modern": "jquery#~2.1.4",
+    "bootstrap": "~3.0.2",
+    "vue": "^2.0.3"
+  }
+}
