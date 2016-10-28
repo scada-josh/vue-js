@@ -4,21 +4,9 @@ layout: "layout-unit-test-vue"
 ---
 
 
-<div id="app" class="container">
-	<h1>Hello {{ name }}</h1> 
+<%= partial  "/partials/_get_data_asynchronous" %>
 
-    <form class="form-inline">
-        <div class="form-group">
-            <label for="name">Enter your name:</label>
-            <!-- binded input to 'name' -->
-            <input v-model="name" type="text" class="form-control" id="name" placeholder="Name">
-        </div>
-    </form>
 
-    <br/>
 
-	<!-- displays all data within Vue instance filtered through JSON -->
-	<pre>{{ $data | json }}</pre>
-</div>
 
 

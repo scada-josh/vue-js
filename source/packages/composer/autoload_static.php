@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitdf9d6f0e35232768d1a9c00f95882180
+class ComposerStaticInit58c96d151bcdbd57e4322615b28e8e2d
 {
     public static $files = array (
         '17fd9fef37c97cfdc0c7794299a8423d' => __DIR__ . '/..' . '/vrana/notorm/NotORM.php',
@@ -23,7 +23,7 @@ class ComposerStaticInitdf9d6f0e35232768d1a9c00f95882180
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInitdf9d6f0e35232768d1a9c00f95882180::$prefixesPsr0;
+            $loader->prefixesPsr0 = ComposerStaticInit58c96d151bcdbd57e4322615b28e8e2d::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

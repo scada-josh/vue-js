@@ -1,0 +1,28 @@
+<div id="app" class="container">
+	
+	<!-- <h1 v-if="sex == 'male'">Hello, Mister {{name}}</h1>
+	<h1 v-else>Hello, Miss {{sex}}</h1> -->
+
+	<h1> Hello, 
+		<span v-if="sex == 'male'"> Mister {{name}}</span>
+		<span v-else>Miss {{name}}</span>
+	</h1>
+
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="sex">Enter your gender:</label>
+            <input v-model="sex" type="text" class="form-control" placeholder="Sex">
+ 
+            <label for="name">Enter your name:</label>
+            <input v-model="name" type="text" class="form-control" placeholder="Name">
+        </div>
+    </form>
+
+
+
+	<!-- displays all data within Vue instance filtered through JSON -->
+	<pre>
+        {{ $data | json }}
+    </pre>
+</div>

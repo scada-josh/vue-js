@@ -1,0 +1,19 @@
+<div id="app">
+	<div class="container">
+		<h1>Let's hear some story!</h1>
+		<ul class="list-group">
+			<story v-for="story in stories" :story="story">
+				
+			</story>
+		</ul>
+
+		<pre>{{ $data }}</pre>
+	</div>
+</div>
+
+<template id="template-story-raw">
+	<li class="list-group-item">
+		{{ story.writer }} said "{{ story.plot}}"
+		<span>{{story.upvotes}}</span>
+	</li>
+</template>

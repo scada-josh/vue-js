@@ -31,6 +31,10 @@ page '/*.txt', layout: false
 
 # Build-specific configuration
 configure :build do
+
+  # Any files you want to ignore:
+  ignore '/packages/symfony/finder/Tests/Fixtures/r%2Be.gex%5Bc%5Da%28r%29s/dir/bar.dat'
+
   # Minify CSS on build
   # activate :minify_css
 
@@ -39,6 +43,7 @@ configure :build do
 
   # Use relative URLs
   activate :relative_assets
+
 
 end
 

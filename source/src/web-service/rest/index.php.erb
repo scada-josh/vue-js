@@ -13,13 +13,28 @@ layout: "layout-api"
     /* Slim framework 2.x */
     $app = new \Slim\Slim();
  
-    $app->get('/hello/:name', function ($name) use ($app) {
+
+
+    // $dsn = "mysql:dbname=rmr_db;host=localhost;charset=UTF8";
+    // $username = "root";
+    // $password = "";
+    // $pdo = new PDO($dsn, $username, $password);
+    // $db = new NotORM($pdo);
+
+    $pdo_sqlite = new PDO('sqlite:../../../database/database.sqlite');
+    $db_sqlite = new NotORM($pdo_sqlite);
+
+
+    $app->get('/hello/:name', function ($name) use ($app, $db_sqlite) {
+
+        $results = $db_sqlite->stories;
  
         // $return_m = array("msg" => "สวัสดี");
         $return_m = array("msg" => "สวัสดี, $name");
  
         $app->response()->header("Content-Type", "application/json");
-        echo json_encode($return_m);
+        // echo json_encode($return_m);
+        echo json_encode($results);
     });
  
     // Run app

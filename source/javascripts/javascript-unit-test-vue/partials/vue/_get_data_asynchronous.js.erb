@@ -1,0 +1,18 @@
+Vue.component('story', {
+	template: "#template-story-raw",
+	props: ['story']
+});
+
+
+var vm = new Vue({
+	el: '#app',
+	data: {
+		stories: []
+	}, 
+	mounted: function() {
+		$.get('../../web-service/rest/hello/josh', function(data) {
+			vm.stories = data;
+		})
+	}
+})
+
