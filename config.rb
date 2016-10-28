@@ -29,6 +29,18 @@ page '/*.txt', layout: false
 #   end
 # end
 
+set :phase_environment, 'Development' # Development, Test, Production 
+
+set :css_dir, 'stylesheets'
+
+set :js_dir, 'javascripts'
+
+set :images_dir, 'images'
+
+set :helper_dir, 'helper'
+
+
+
 # Build-specific configuration
 configure :build do
 

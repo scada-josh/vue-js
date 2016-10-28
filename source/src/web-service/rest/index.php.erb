@@ -11,21 +11,52 @@ layout: "layout-api"
  
     // Create and configure Slim app
     /* Slim framework 2.x */
-    $app = new \Slim\Slim();
- 
+    // $app = new \Slim\Slim();
+    $logWriter = new \Slim\LogWriter(fopen('./api-debug.log', 'a'));
+    $app = new \Slim\Slim(array('log.enabled' => true,
+                                'log.writer' => $logWriter,
+                                'debug' => true));
 
 
-    // $dsn = "mysql:dbname=rmr_db;host=localhost;charset=UTF8";
-    // $username = "root";
-    // $password = "";
-    // $pdo = new PDO($dsn, $username, $password);
-    // $db = new NotORM($pdo);
+<% if config[:phase_environment] == "Development" %>
 
-    $pdo_sqlite = new PDO('sqlite:../../../database/database.sqlite');
-    $db_sqlite = new NotORM($pdo_sqlite);
+    /* Connect Database Manager Partial : Localhost */
+    <%= partial "/ConnectDatabase/_connectDB2_Localhost" %>
+    <%= partial "/ConnectDatabase/_connectMySQL_Localhost" %>
+    <%= partial "/ConnectDatabase/_connectSQLite_Localhost" %>
+
+<% elsif config[:phase_environment] == "Test" %>
+
+    /* Connect Database Manager Partial : Localhost */
+    <%= partial "/ConnectDatabase/_connectDB2_Localhost" %>
+    <%= partial "/ConnectDatabase/_connectMySQL_Localhost" %>
+    <%= partial "/ConnectDatabase/_connectSQLite_Localhost" %>
+
+<% elsif config[:phase_environment] == "Production" %>
+
+    /* Connect Database Manager Partial : Production */
+    <%= partial "/ConnectDatabase/_connectDB2_Production" %>
+    <%= partial "/ConnectDatabase/_connectMySQL_Production" %>
+    <%= partial "/ConnectDatabase/_connectSQLite_Production" %>
+
+<% end %>
+
+
+
+    /* Test Manager */
+    $app->get('/testManager/getMsg/:name',function($name) use ($app) { getMsg($app, $name); });
+
 
 
     $app->get('/hello/:name', function ($name) use ($app, $db_sqlite) {
+
+        $request = $app->request;
+        $response = $app->response;
+
+        // $app->log->debug('Request path: ' . $request->getPathInfo());
+        // $app->log->debug('Response status: ' . $response->getStatus());
+
+
 
         $results = $db_sqlite->stories;
  
@@ -40,4 +71,9 @@ layout: "layout-api"
     // Run app
     $app->run();
  
+    /* Test Manager Partial */
+    <%= partial "/TestManager/_getMsg" %>
+
+
+
 ?>
